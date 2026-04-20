@@ -284,3 +284,28 @@ python -m backend.tools.validate_matching --min-events 5
 
 - Rainbow Six Siege (full sensor suite)
 - Valorant (partial — UI sensor calibration in progress)
+
+---
+
+## What I Learned Building This
+
+### Web Scraping at Scale
+I scraped three different data sources — Liquipedia, sixstats.cc, and tracker.gg — each with completely different structures, rate limits, and anti-bot measures. This taught me that scraping is mostly about patience and reading the network tab, not clever code. The real skill is figuring out which endpoint the site actually uses versus what the docs say, and building in delays that don't get you banned (2.5s for Liquipedia, 3s for tracker.gg).
+
+### Cosine Similarity for Matching
+The Twin Agent compares a scouted player's 15-dimensional style vector against pro archetypes using cosine similarity. Before this I'd only heard of it in theory. Implementing it from scratch — normalising vectors, taking dot products, handling edge cases like zero vectors — made it concrete. I also learned why raw similarity scores aren't enough: two players with identical mechanics but different roles shouldn't match, which is why I added a 15% role-match bonus on top of the similarity score.
+
+### Multi-Dimensional Feature Vectors
+The Profiler produces a 15-dimensional "Stylistic DNA" vector covering things like aggression, utility discipline, positioning, clutch tendencies. The hard part wasn't the math — it was deciding what the 15 dimensions should be. I had to think about what actually differentiates a roamer from an anchor at a deep level, then translate that into things an AI can measure from a VOD. Feature design is a domain knowledge problem first, and a technical problem second.
+
+### Why Agent Role Separation Matters
+Early versions had one AI doing everything — watch the VOD, find mistakes, compare to pros, give a verdict. The output was generic. Splitting into Observer → Profiler → Twin → Value Critic, where each agent has a single job and a strict output format, produced dramatically better results. Each agent can be prompted and tuned independently. The Observer just logs events. It doesn't evaluate them — that's the Profiler's job. Separation of concerns applies to AI agents just as much as software modules.
+
+### CSS Modules Design System
+Pathfinder started with Tailwind and I rebuilt the UI in CSS Modules with a dark design system (pure black background, neon green accent, DM Sans + DM Mono fonts). I learned what a design token actually is — `--accent: #00ff88` used everywhere means one change updates the whole UI. I also learned why Tailwind and CSS Modules can coexist in the same build without conflict, and when each is the right tool.
+
+### Windows Subprocess Environment Variables
+The backend kept failing with `GEMINI_API_KEY not set` even after the `.env` was loaded. The root cause was that `uvicorn --reload` spawns child processes that don't inherit the parent's environment variables on Windows the same way Linux does. The fix was loading `.env` at the very top of both `main.py` and `orchestrator.py` as a failsafe, and running uvicorn *without* `--reload` in production. Environment variable inheritance is platform-specific behaviour I'd never had to think about before.
+
+### Scouting "By Reward" vs "By Mistake"
+The conceptual insight that drove the whole project: every other esports AI tool finds what players do wrong. Pathfinder finds what they do exceptionally well and matches it to a professional style. This reframing changed every design decision — the prompts, the output format, what the Profiler measures. I learned that the most important engineering decision is often the framing of the problem, not the implementation of the solution.
