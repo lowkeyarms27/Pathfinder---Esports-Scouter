@@ -1,0 +1,31 @@
+.page {
+  padding: 80px 24px 64px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 32px 0 32px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.sub {
+  font-size: 14px;
+  color: var(--text-muted);
+}

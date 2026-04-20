@@ -1,0 +1,208 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardTitle {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.matchRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.matchInfo {
+  flex: 1;
+}
+
+.matchHandle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.roleBadge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid;
+}
+
+.matchTeam {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.matchNat {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.matchRank {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.matchScore {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.scoreNum {
+  font-size: 32px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  line-height: 1;
+}
+
+.scoreHigh   { color: var(--accent); }
+.scoreMid    { color: var(--yellow); }
+.scoreLow    { color: var(--text-muted); }
+
+.scoreLabel {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.scoreSub {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  opacity: 0.6;
+}
+
+.bar {
+  height: 3px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--accent), rgba(0,255,136,0.4));
+  transition: width 0.7s ease;
+}
+
+.narrative {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.simsGaps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.listTitle {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.listTitleGreen { color: var(--accent); }
+.listTitleGray  { color: var(--text-muted); }
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.listItemIcon { color: var(--accent); }
+.listItemIconGap { color: var(--text-muted); }
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+.altsTitle {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.altRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.altName {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.altTeam {
+  color: var(--text-muted);
+}
+
+.altScore {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.archetypeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.archetypeLabel {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.archetypeBadge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 10px;
+  border-radius: 99px;
+  border: 1px solid;
+}
